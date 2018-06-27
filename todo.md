@@ -1,30 +1,26 @@
-26.06
-
-Model: User, Order, Product, Purchase
-
-User h_m orders
-h_m purchase
-email
-password_diges
-
-
-Product m2m order
-name
-price
-photo
-h_m purchases
-
-Order h_m purchase
-b_t user
-total
-
-Purchase b_t order(optional)
-b_t user
-b_t product
-quantity
-price
-total
-### All prices should be in cents!!!!
+User h_m orders         #        
+     h_m purchase       #      
+email                   # 
+password_diges          #
+#############################
+Product m2m order           #   
+        h_m purchases       #     
+name                        # 
+price                       #
+photo                       #    
+#############################
+Order h_m purchase          # 
+      b_t user              #
+total                       #        
+#############################
+Purchase b_t order(optional)# pocupca
+         b_t user           #
+         b_t product        #
+quantity                    #
+price                       #
+total                       #
+#############################
+#All prices should be in cents!!!!
 https://github.com/drapergem/draper
 
 purchase.total => 1444
