@@ -30,8 +30,7 @@ purchase.decorate.total=>"14.44$"
 1.POST /api/purchases/
 	Request:
 	{
-		product_id : 1,
-		quantity: 2
+		product_id: 1,	quantity: 2
 	}
 
 Response
