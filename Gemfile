@@ -28,7 +28,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rspec-rails'
-  gem 'nyan-cat-formatter'end
+  gem 'nyan-cat-formatter'
+  gem 'railroady'
+end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

@@ -1,7 +1,7 @@
-User h_m orders         #        
-     h_m purchase       #      
-email                   # 
-password_diges          #
+User h_m orders             #        
+     h_m purchases          #      
+email                       # 
+password_diges              #
 #############################
 Product m2m order           #   
         h_m purchases       #     
@@ -32,7 +32,8 @@ purchase.decorate.total=>"14.44$"
 	{
 		product_id : 1,
 		quantity: 2
-}
+	}
+
 Response
 same as GET
 
@@ -42,22 +43,22 @@ same as GET
 		“collection” : 
 			[
 				{
-					id: 1,
+					id: 1,   (purchase_id)
 					product_id: 1,
 					user_id: 3,
 					quantity : 2
-}
-],
-“total_pages” : 1,
-“current_page” : 1
-}
+				}
+			],
+		“total_pages” : 1,
+		“current_page” : 1
+	}
 
 3. POST /api/purchases/drop
 	Request
 	{
-			product_id : 1,
-			quantity : 1
-}
+		product_id : 1,
+		quantity : 1
+  }
 response
 same as GET
 
@@ -74,23 +75,17 @@ Response:
 		id: 1(order_id),
 		user_id : 2,
 		purchases : 
-		[
-{
-	id : 1,(purchase_id)
-				product_id : 1,
+			[
+				{
+					id : 1,(purchase_id)
+					product_id : 1,
 					quantity : 1,
 					order_id : 1
-}
-],
-sum : 200,
-status : “pending”
-}
-class Order
-enum status: [:pending, :accepted, :declained]
-end
-
-migration
-	add_column  :orders, :status, :integer, default: 0
+				}
+			],
+		sum : 200,
+		status : “pending”
+	}
 
 5. GET /api/orders
 	Request
