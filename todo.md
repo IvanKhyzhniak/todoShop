@@ -1,13 +1,13 @@
-User h_m orders             #        
-     h_m purchases          #      
-email                       # 
+User h_m orders             #
+     h_m purchases          #
+email                       #
 password_diges              #
 #############################
-Product m2m order           #   
-        h_m purchases       #     
-name                        # 
+Product m2m order           #
+        h_m purchases       #
+name                        #
 price                       #
-photo                       #    
+photo                       #
 #############################
 Order h_m purchase          # 
       b_t user              #

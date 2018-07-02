@@ -2,12 +2,11 @@ class Api::PurchasesController < ApplicationController
   before_action :set_product, only: [:create, :drop]
   
   def index
-  
+    
   end
   
   def create
     @product.purchases.create! create_params
-    render purchase_params.to_json
   end
   
   def drop
@@ -19,7 +18,8 @@ class Api::PurchasesController < ApplicationController
   private
   
   def create_params
-    { quantity: params[:quantity], 
+    { user: User.last, ### TODO change to current user !!!?
+      quantity: params[:quantity], 
       price: @product.price, 
       total: @product.price * params[:quantity].to_i
     }
