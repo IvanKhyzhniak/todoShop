@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     
-  helper_method :collection, :resource, :current_user
+  helper_method :resource, :current_user
 
   before_action :authenticate!
 

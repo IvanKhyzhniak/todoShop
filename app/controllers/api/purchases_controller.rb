@@ -10,9 +10,8 @@ class Api::PurchasesController < ApplicationController
   end
   
   def drop
-    params[:quantity].to_i.times do 
-      @product.purchases.last.destroy
-    end if @product.purchases.count > params[:quantity].to_i
+    q = @product.purchases.quantity - params[:quantity].to_i
+    @product.purchases.quantity = q if q
   end
   
   private
