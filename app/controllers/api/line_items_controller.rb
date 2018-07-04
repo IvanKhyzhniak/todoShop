@@ -1,4 +1,4 @@
-class Api::PurchasesController < ApplicationController
+class Api::LineItemsController < ApplicationController
   before_action :set_product, only: [:create, :drop]
   
   def index

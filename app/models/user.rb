@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :purchases
+  has_many :line_items
   has_many :orders
   has_many :sessions
     
