@@ -61,7 +61,7 @@ same as GET
 response
 same as GET
 
-
+curl -H "Content-Type: application/json" -d '{ "product_id": 1, "quantity": 2 }' https://mlsdev-chat-ivanhizh.c9users.io/api/purchases
 
 MAXIMUM
 
