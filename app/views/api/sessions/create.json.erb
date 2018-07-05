@@ -1,9 +1,10 @@
-<%= sanitize {  user: { email: @current_user.email, 
-                        full_name: @current_user.full_name,
-                        finished_orders_count: @current_user.orders.where(status: :accepted).count
-                },
-                session: {
-                  auth_token: @session.auth_token
-                }
-             }.to_json        
+<%=
+    # sanitize {  user: { email: @current_user.email, 
+    #                     full_name: @current_user.full_name,
+    #                     finished_orders_count: @current_user.orders.where(status: :accepted).count
+    #             },
+    #             session: {
+    #               auth_token: @session.auth_token
+    #             }
+    #         }.to_json        
 %>

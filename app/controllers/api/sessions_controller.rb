@@ -1,5 +1,6 @@
 class Api::SessionsController < ApplicationController
   skip_before_action :authenticate!, only: :create
+  before_action :current_user
   
   def destroy
     current_user.auth_token.destroy
