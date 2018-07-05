@@ -1,3 +1,59 @@
+1)remove table orders_products √
+2)add Authorization as in chats 
+add Session model         √
+copy paste application controller from chats √
+add first_name and last_name attribute to User √
+add auth_token attribute to Session with generation on create √
+session b_t User, User has_many sessions   √
+add before action(except Session create)   √
+POST /api/sessions √?
+request:
+		{email: string,
+password: string}
+	response: 
+		user: 
+{
+email: string,
+full_name: string,
+finished_orders_count: int 
+},
+session:
+{ 
+auth_token: string
+}
+	### optional DELETE /api/sessions
+		request no_body
+		response 204 No Content
+rename Purchase to LineItem √
+rework Purchase Controller to have only :build_resource, :resource, :collection methods as is in chats
+POST /api/line_items
+	request:
+	{
+		action: "add" ("remove"),
+		product_id: int,
+		quantity: int
+}
+10. add service folder, add LineItemHandler.new(current_user, params).save
+метод сейв
+смотришь или существует у юзера лайн айтем такой же
+если есть то добавляешь(отнимаешь), если нет то создаешь с заданый кол-вом
+при минусовом кол-ве товаров в лайн айтеме - он удаляется
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 User h_m orders             #
      h_m purchases          #
 email                       #

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
-    resources :sessions, only: [:create, :destroy]
-    post "line_items/drop", to: "purchases#drop"
+    delete "/sessions", to: 'sessions#destroy'
+    resources :sessions, only: [:create]
     resources :line_items, only: [:index, :create]
   end
 end

@@ -1,23 +1,21 @@
 class Api::SessionsController < ApplicationController
+  include ActionController::HttpAuthentication::Token
   skip_before_action :authenticate!, only: :create
-  before_action :current_user
+  
+  def create
+    @user = current_user
+    super
+  end
   
   def destroy
-    current_user.auth_token.destroy
+    current_user.sessions.find_by(auth_token: token_and_options(request)).destroy
     
     head :no_content
   end
   
   private
   def resource
-    @session ||= Session.new resource_params
-  end
-
-  def current_user
-    authenticate_or_request_with_http_token do |token, options|
-      @token = token
-      @current_user = User.joins(:auth_token).find_by(auth_tokens: { value: token })
-    end
+    @session ||= current_user.sessions.new 
   end
   
   def resource_params
