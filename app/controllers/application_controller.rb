@@ -30,7 +30,7 @@ class ApplicationController < ActionController::API
 
   def current_user
     authenticate_or_request_with_http_token do |token, options|
-      @current_user = Session.find_by(auth_token: token).user
+      @current_user ||= Session.find_by(auth_token: token).user
     end
   end
 
