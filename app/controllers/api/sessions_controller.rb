@@ -3,8 +3,12 @@ class Api::SessionsController < ApplicationController
   skip_before_action :authenticate!, only: :create
   
   def create
-    @user = current_user
-    super
+    @user = User.find_by email: params[:email]
+    if @user.password_diges == params[:password]
+     @session = @user.sessions.create!
+    else
+      raise AuthorizationError
+    end
   end
   
   def destroy
@@ -14,9 +18,9 @@ class Api::SessionsController < ApplicationController
   end
   
   private
-  def resource
-    @session ||= current_user.sessions.new 
-  end
+  # def resource
+  #   @session ||= @user.sessions.new 
+  # end
   
   def resource_params
     params.require(:session).permit(:email, :password)

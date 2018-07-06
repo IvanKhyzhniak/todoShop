@@ -1,3 +1,8 @@
+curl -H 'Accept: application/json' -d '{"email": "lol@lol.kek", "password": "123"}'  https://mlsdev-chat-ivanhizh.c9users.io/api/sessions
+curl -H 'Accept: application/json' -H 'Authorization: Token token="CwUtBUnxPZiPM9vTjGhzrA1i"' -X "DELETE"  https://mlsdev-chat-ivanhizh.c9users.io/api/sessions
+
+
+
 1)remove table orders_products √
 2)add Authorization as in chats 
 add Session model         √
