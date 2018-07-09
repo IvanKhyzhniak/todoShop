@@ -3,17 +3,11 @@ class Api::SessionsController < ApplicationController
   skip_before_action :authenticate!, only: :create
   
   def create
-    @user ||= User.find_by email: resource_params[:email]
-    if @user.authenticate resource_params[:password]
-     @session ||= @user.sessions.create!
-    else
-      raise AuthorizationError
-    end
+    SignIn.execute!(resource_params[:session])
   end
   
   def destroy
-    current_user.sessions.find_by(auth_token: token_and_options(request)[0]).destroy
-    
+    SignOut.execute!(current_user, request)
     head :no_content
   end
   
