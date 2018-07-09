@@ -1,0 +1,14 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true, bgcolor="none"]
+	"Product" [shape=Mrecord, label="{Product|id :integer\lname :varchar\lprice :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Order" [shape=Mrecord, label="{Order|id :integer\ltotal :integer\luser_id :integer\lcreated_at :datetime\lupdated_at :datetime\lstatus :integer\l}"]
+	"LineItem" [shape=Mrecord, label="{LineItem|id :integer\lorder_id :integer\luser_id :integer\lproduct_id :integer\lquantity :integer\lprice :integer\ltotal :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Session" [shape=Mrecord, label="{Session|id :integer\lcreated_at :datetime\lupdated_at :datetime\lauth_token :varchar\luser_id :integer\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lemail :varchar\lpassword_digest :varchar\lcreated_at :datetime\lupdated_at :datetime\lfirst_name :varchar\llast_name :varchar\l}"]
+	"ApplicationRecord" []
+	"Product" -> "LineItem" [arrowtail=odot, arrowhead=crow, dir=both color="#630034"]
+	"Order" -> "LineItem" [arrowtail=odot, arrowhead=crow, dir=both color="#C75AB7"]
+	"Order" -> "Product" [arrowtail=crow, arrowhead=crow, dir=both color="#8C083E"]
+	"User" -> "Order" [arrowtail=odot, arrowhead=crow, dir=both color="#6FB2F1"]
+	"User" -> "Session" [arrowtail=odot, arrowhead=crow, dir=both color="#DD9CE4"]
+}

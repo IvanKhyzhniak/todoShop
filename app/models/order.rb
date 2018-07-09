@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  enum status: [:pending, :accepted, :declained]
+  enum status: [:cart, :pending, :accepted, :declained]
   
   belongs_to :user
   has_many :line_items
