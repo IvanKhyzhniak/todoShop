@@ -10,7 +10,7 @@ class Sign
     end
   end
   
-  def Sing.in!(params)
+  def Sign.in!(params)
     @params = params&.symbolize_keys || {}
     
     raise AuthorizationError unless valid?
@@ -18,7 +18,7 @@ class Sign
     user.sessions.create!
   end
   
-  def Sing.out!(user, request)
+  def Sign.out!(user, request)
     user.sessions.find_by(auth_token: token_and_options(request)[0]).destroy!
   end
   
