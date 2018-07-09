@@ -1,5 +1,4 @@
 class Api::SessionsController < ApplicationController
-  include ActionController::HttpAuthentication::Token
   skip_before_action :authenticate!, only: :create
   
   def create
