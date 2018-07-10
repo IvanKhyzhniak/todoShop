@@ -1,13 +1,18 @@
 class SessionDecorator < ApplicationDecorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
-
+  def as_json
+    {  user: 
+             {   
+                email: current_user.email, 
+                full_name: current_user.full_name,
+                finished_orders_count: current_user.orders.where(status: :accepted).count
+             },
+      session: 
+                {
+                  auth_token: current_session.auth_token
+                }
+    }
+  end
+  
 end
