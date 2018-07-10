@@ -1,35 +1,31 @@
 class Sign
-  include ActionController::HttpAuthentication::Token
   include ActiveModel::Validations
-  
+
+  include Draper::Decoratable
+
   validate do |model|
     if user
-      model.errors.add :password, 'is invalid' unless password?
+      model.errors.add :password, 'is invalid' unless user.authenticate @params[:password]
     else
       model.errors.add :email, 'not found'
     end
   end
-  
-  def Sign.in!(params)
-    @params = params&.symbolize_keys || {}
-    
-    raise AuthorizationError unless valid?
-    
-    user.sessions.create!
+
+  def initialize params
+    @params = params
   end
-  
-  def Sign.out!(user, request)
-    user.sessions.find_by(auth_token: token_and_options(request)[0]).destroy!
+
+  def save!
+    raise ActiveModel::StrictValidationFailed unless valid?
+
+    session
   end
-  
-  private
-  
+
   def user
     @user ||= User.find_by email: @params[:email]
   end
 
-  def password?
-    user.authenticate @params[:password]
+  def session
+    @session ||= user.sessions.create!
   end
-  
 end
