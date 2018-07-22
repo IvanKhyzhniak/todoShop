@@ -1,17 +1,20 @@
 class Api::SessionsController < ApplicationController
   skip_before_action :authenticate!, only: :create
-  
+
   def create
-    @current_session = Sign.in!(resource_params[:session])
+    @resource = Sign.new resource_params
+
+    resource.save!
   end
-  
+
   def destroy
-    Sign.out!(current_user, request)
+    current_session.destroy!
+
     head :no_content
   end
-  
+
   private
-  
+
   def resource_params
     params.require(:session).permit(:email, :password)
   end

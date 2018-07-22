@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate!, only: :create
 
-  before_action :build_resource, only: :create
-
-  def show     
+  def show
   end
 
   private
+
   def build_resource
     @user = User.new resource_params
   end
